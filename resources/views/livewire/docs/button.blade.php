@@ -6,284 +6,215 @@ use Livewire\Volt\Component;
 layout('layouts.guest');
 
 ?>
+
 <div>
-    <x-slot:title>Button Component</x-slot:title>
-    <x-slot:page_title>Button</x-slot:page_title>
+    <x-slot:title>Button Component - BComponents</x-slot:title>
+    <x-slot:page_title>Button Component</x-slot:page_title>
 
-    <p>
-        The default primary colour theme for Bcomponents buttons is blue.
-        It is possible to set a colour attribute to display our button in different colours. These are however a
-        definite list of colours.
-    </p>
-    <p>
-        By default the component uses the <code class="inline">&lt;button&gt;</code> tag to build the button. If you find
-        yourself in the category of developers who prefer to use the <code class="inline">&lt;a&gt;</code> tag for their
-        buttons, you will need to specify
-        the attribute <code class="inline text-red-500">tag="a"</code>.
-    </p>
-    <h2 id="type">Type Button</h2>
-    <div class="text-center p-4">
-        <x-button type="button" color="primary">Subscribe Now</x-button>
+    <div class="space-y-12">
+        <!-- Introduction Section -->
+        <section id="introduction">
+            <h2 class="text-3xl font-bold mb-6">Introduction</h2>
+            <p class="mb-4 text-lg text-white">
+                The <strong>Button Component</strong> is a highly customizable and feature-rich component designed for modern web applications. It supports a wide range of styles, states, and integrations, making it suitable for any use case.
+            </p>
+            <h3 class="text-xl font-semibold mb-4">Key Features</h3>
+            <ul class="list-disc pl-6 space-y-2">
+                <li><strong>Multiple Variants:</strong> Solid, Outline, Soft, Ghost, and Link styles.</li>
+                <li><strong>Color Schemes:</strong> 8 predefined colors (primary, secondary, success, danger, warning, info, light, dark).</li>
+                <li><strong>Flexible Sizing:</strong> 5 size options (xs, sm, md, lg, xl).</li>
+                <li><strong>Icon Support:</strong> Easily add icons with customizable positioning.</li>
+                <li><strong>Loading States:</strong> Built-in loading spinner with Livewire integration.</li>
+                <li><strong>Accessibility:</strong> Fully accessible with ARIA labels and keyboard support.</li>
+                <li><strong>Advanced Features:</strong> Ripple effect, tooltips, button groups, and more.</li>
+            </ul>
+        </section>
 
-        <x-button-fullscreen />
+        <!-- Basic Usage Section -->
+        <section id="basic-usage">
+            <h2 class="text-2xl font-bold mb-4">Basic Usage</h2>
+            <div class="p-6 shadow">
+                <h3 class="text-xl font-semibold mb-4">Default Button</h3>
+                <x-b-button>Default Button</x-b-button>
+                <pre class="mt-4"><code>&lt;x-b-button&gt;Click Me&lt;/x-b-button&gt;</code></pre>
+            </div>
+            <div class="p-6 shadow">
+                <h3 class="text-xl font-semibold mb-4">Link Button</h3>
+                <x-b-button href="#home" type="link">Link Button</x-b-button>
+                <pre class="mt-4"><code>&lt;x-b-button href="#home" type="link"&gt;Home&lt;/x-b-button&gt;</code></pre>
+            </div>
+        </section>
 
+        <!-- Colors & Variants Section -->
+        <section id="colors-variants">
+            <h2 class="text-2xl font-bold mb-6">Colors & Variants</h2>
+            <div class="space-y-8">
+                @foreach(['solid', 'outline', 'soft', 'ghost', 'link'] as $variant)
+                <div class="border rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4">{{ ucfirst($variant) }} Buttons</h3>
+                    <div class="grid grid-cols-4 gap-4">
+                        @foreach(['primary', 'secondary', 'success', 'danger'] as $color)
+                        <x-b-button :color="$color" :variant="$variant">
+                            {{ ucfirst($color) }}
+                        </x-b-button>
+                        @endforeach
+                    </div>
+                    <pre class="mt-4"><code>&lt;x-b-button color="primary" variant="{{ $variant }}"&gt;
+    {{ ucfirst($color) }}
+&lt;/x-b-button&gt;</code></pre>
+                </div>
+                @endforeach
+            </div>
+        </section>
+
+        <!-- Sizing & Styling Section -->
+        <section id="sizing-styling">
+            <h2 class="text-2xl font-bold mb-6">Sizing & Styling</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Sizes</h3>
+                    <div class="space-y-4">
+                        @foreach(['xs', 'sm', 'md', 'lg', 'xl'] as $size)
+                        <x-b-button :size="$size" class="w-full">
+                            {{ strtoupper($size) }} Size
+                        </x-b-button>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Rounded Styles</h3>
+                    <div class="space-y-4">
+                        @foreach(['none', 'sm', 'md', 'lg', 'full'] as $rounded)
+                        <x-b-button :rounded="$rounded" class="w-full">
+                            {{ ucfirst($rounded) }}
+                        </x-b-button>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icon Integration Section -->
+        <section id="icons">
+            <h2 class="text-2xl font-bold mb-6">Icon Integration</h2>
+            <div class="grid gap-6 md:grid-cols-3">
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Left Icon</h3>
+                    <x-b-button icon="fas fa-star">Left Icon</x-b-button>
+                    <pre class="mt-4"><code>&lt;x-b-button icon="fas fa-star"&gt;Favorites&lt;/x-b-button&gt;</code></pre>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Right Icon</h3>
+                    <x-b-button icon="fas fa-arrow-right" icon-position="right">Right Icon</x-b-button>
+                    <pre class="mt-4"><code>&lt;x-b-button icon="fas fa-arrow-right" icon-position="right"&gt;Continue&lt;/x-b-button&gt;</code></pre>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Icon Only</h3>
+                    <x-b-button icon="fas fa-user" icon-only aria-label="Profile" />
+                    <pre class="mt-4"><code>&lt;x-b-button icon="fas fa-user" icon-only /&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Features Section -->
+        <section id="advanced">
+            <h2 class="text-2xl font-bold mb-6">Advanced Features</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <!-- Button Groups -->
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Button Groups</h3>
+                    <div class="inline-flex">
+                        <x-b-button group="toolbar" group-position="first">First</x-b-button>
+                        <x-b-button group="toolbar" group-position="middle">Middle</x-b-button>
+                        <x-b-button group="toolbar" group-position="last">Last</x-b-button>
+                    </div>
+                    <pre class="mt-4"><code>&lt;x-b-button group="toolbar" group-position="first"&gt;...&lt;/x-b-button&gt;
+&lt;x-b-button group="toolbar" group-position="middle"&gt;...&lt;/x-b-button&gt;
+&lt;x-b-button group="toolbar" group-position="last"&gt;...&lt;/x-b-button&gt;</code></pre>
+                </div>
+
+                <!-- Tooltips & Accessibility -->
+                <div class="p-6 bg-white rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4">Accessibility Features</h3>
+                    <x-b-button
+                        icon="fas fa-lock"
+                        disabled
+                        disabled-reason="Requires admin privileges"
+                        aria-label="Secure operation"
+                        tooltip="Restricted action">
+                        Secure Action
+                    </x-b-button>
+                    <pre class="mt-4"><code>&lt;x-b-button
+    disabled
+    disabled-reason="Requires admin privileges"
+    aria-label="Secure operation"
+    tooltip="Restricted action"
+&gt;...&lt;/x-b-button&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Reference Section -->
+        <section id="api">
+            <h2 class="text-2xl font-bold mb-6">API Reference</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Property</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Default</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach([
+                        ['color', 'string', 'primary', 'Button color scheme'],
+                        ['variant', 'string', 'solid', 'Visual style variant'],
+                        ['size', 'string', 'md', 'Size preset'],
+                        ['rounded', 'string', 'md', 'Border radius style'],
+                        ['icon', 'string|null', 'null', 'Font Awesome icon class'],
+                        ['icon-position', 'string', 'left', 'Icon placement (left, right)'],
+                        ['wire-click', 'string|null', 'null', 'Livewire click handler'],
+                        ['x-on-click', 'string|null', 'null', 'Alpine.js click handler'],
+                        ['ripple', 'boolean', 'true', 'Ripple effect toggle'],
+                        ['group', 'string|null', 'null', 'Button group identifier'],
+                        ['group-position', 'string|null', 'null', 'Position in button group (first, middle, last)'],
+                        ['tooltip', 'string|null', 'null', 'Hover tooltip text'],
+                        ['shortcut', 'string|null', 'null', 'Keyboard shortcut'],
+                        ] as $prop)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-mono">{{ $prop[0] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $prop[1] }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ $prop[2] }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-500">{{ $prop[3] }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-button type="button" color="primary" &gt;
-                subscribe now
-            &lt;/x-button&gt;
-        </code>
-    </pre>
-    <h2 id="type">Type Link</h2>
-    <div class="text-center p-4">
-        <x-button href="/" color="primary">Subscribe Now</x-button>
-    </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-button href="/" color="primary" &gt;
-                subscribe now
-            &lt;/x-button&gt;
-        </code>
-    </pre>
-    <h2 id="type">Type Submit</h2>
-    <div class="text-center p-4">
-        <x-button type="submit" color="primary">Subscribe Now</x-button>
-    </div>
-    <pre class="language-markup line-numbers">
-        <code>
-            &lt;x-button type="submit" color="primary" &gt;
-                subscribe now
-            &lt;/x-button&gt;
-        </code>
-    </pre>
-    <h2>Disabled Button</h3>
-        <div class="text-center p-4">
-            <x-button type="button" color="secondary" disabled="true">Disabled Button</x-button>
-        </div>
-        <pre class="language-markup line-numbers">
-            <code>
-                &lt;x-button type="button" color="secondary" disabled="true"&gt;
-                    disabled button
-                &lt;/x-button&gt;
-            </code>
-        </pre>
 
-        <h2 id="coloured">Colored Button</h2>
-        <p>
-            Only primary buttons can take on different colors. Below are examples of buttons with different colors.
-        </p>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 justify-center text-center gap-4 mt-4">
-            <x-button color="primary">Primary</x-button>
-            <x-button color="secondary">Secondary</x-button>
-            <x-button color="danger">Danger</x-button>
-            <x-button color="alert">Alert</x-button>
-            <x-button color="success">Success</x-button>
-            <x-button color="warning">Warning</x-button>
-            <x-button color="info">Info</x-button>
-        </div>
-
-        <pre class="language-markup line-numbers" data-line="1,5,9,13,17,21,25,29">
-            <code>
-                &lt;x-button color="primary"&gt;Primary&lt;/x-button&gt;
-                &lt;x-button color="seconary"&gt;Secondary&lt;/x-button&gt;
-                &lt;x-button color="danger"&gt;Danger&lt;/x-button&gt;
-                &lt;x-button color="alert"&gt;Alert&lt;/x-button&gt;
-                &lt;x-button color="success"&gt;Success&lt;/x-button&gt;
-                &lt;x-button color="warning"&gt;Warning&lt;/x-button&gt;
-                &lt;x-button color="info"&gt;Info&lt;/x-button&gt;
-            </code>
-        </pre>
-        <h2 id="coloured">Outlined Button</h2>
-        <p>
-            Only primary buttons can take on different colors. Below are examples of buttons with different colors.
-        </p>
-        <div class="grid grid-cols-2 sm:grid-cols-3 justify-center text-center gap-4 mt-4">
-            <x-button color="primaryOutline">Primary Outline</x-button>
-            <x-button color="secondaryOutline">Secondary Outline</x-button>
-            <x-button color="dangerOutline">Danger Outline</x-button>
-            <x-button color="alertOutline">Alert Outline</x-button>
-            <x-button color="successOutline">Success Outline</x-button>
-            <x-button color="warningOutline">Warning Outline</x-button>
-            <x-button color="infoOutline">Info Outline</x-button>
-        </div>
-        <pre class="language-markup line-numbers" data-line="1,5,9,13,17,21,25,29">
-            <code>
-                &lt;x-button color="primaryOutline"&gt;Primary Outline&lt;/x-button&gt;
-                &lt;x-button color="seconaryOutline"&gt;Secondary Outline&lt;/x-button&gt;
-                &lt;x-button color="dangerOutline"&gt;Danger Outline&lt;/x-button&gt;
-                &lt;x-button color="alertOutline"&gt;Alert Outline&lt;/x-button&gt;
-                &lt;x-button color="successOutline"&gt;Success Outline&lt;/x-button&gt;
-                &lt;x-button color="warningOutline"&gt;Warning Outline&lt;/x-button&gt;
-                &lt;x-button color="infoOutline"&gt;Info Outline&lt;/x-button&gt;
-            </code>
-        </pre>
-
-        <h2 id="icons">Buttons with Icons</h2>
-
-        <p>
-            Buttons can be enhanced with icons. Simply specify the icon name in the <code class="inline">icon</code>
-            attribute.
-            Icons are positioned to the left by default, but you can set <code
-                class="inline">icon_position="true"</code>
-            to position
-            the icon to the right of the button.
-        </p>
-
-        <p>
-            If you specify <b>icon_position="right"</b></b>, is positioned to the right of the button or left side.
-        </p>
-
-        <div class="text-center">
-            <!-- Button with icon on the left -->
-            <x-button icon="refresh">Refresh page</x-button>
-        </div>
-        <pre class="language-markup line-numbers">
-            <code>
-                &lt;x-button type="button" color="info" icon="refresh"&gt;
-                    Refresh Page
-                &lt;/x-button&gt;
-            </code>
-        </pre>
-
-        <div class="text-center space-x-4">
-            <!-- Button with icon on the right -->
-            <x-button type="button" color="info" icon="angle-right" icon_position="right">Next
-                Chapter</x-button>
-        </div>
-        <pre class="language-markup line-numbers">
-            <code>
-                &lt;x-button
-                    type="button"
-                    color="secondary"
-                    icon="arrow-small-right"
-                    icon_position="right"&gt;
-                    Next Chapter
-                &lt;/x-button&gt;
-            </code>
-        </pre>
-
-        <h2 id="attributes">Full List Of Attributes</h2>
-        <p>The table below shows a comprehensive list of all the attributes available for the Button component.</p>
-
-        <x-table-responsive>
-            <x-table.thead>
-                <x-table.th>Option</x-table.th>
-                <x-table.th>Default</x-table.th>
-                <x-table.th>Available Values</x-table.th>
-            </x-table.thead>
-            <x-table.tbody>
-                <x-table.tr>
-                    <x-table.td>type</x-table.td>
-                    <x-table.td>button</x-table.td>
-                    <x-table.td><code class="inline">button</code><code class="inline">submit</code> <code
-                            class="inline">href</code>
-                    </x-table.td>
-                </x-table.tr>
-                <x-table.tr>
-                    <x-table.td>size</x-table.td>
-                    <x-table.td>regular</x-table.td>
-                    <x-table.td><code class="inline">sm</code> <code class="inline">md</code> <code
-                            class="inline">lg</code>
-                        <code class="inline">xl</code></x-table.td>
-                </x-table.tr>
-                <x-table.tr>
-                    <x-table.td>name</x-table.td>
-                    <x-table.td><em>blank</em></x-table.td>
-                    <x-table.td>This name is added to the button's <code class="inline">class</code> attribute just for
-                        convenience.
-                        This name can then be used to access the button via javascript or css.</x-table.td>
-                </x-table.tr>
-                <x-table.tr>
-                    <x-table.td>color</x-table.td>
-                    <x-table.td>primary</x-table.td>
-                    <x-table.td>Set the colour of the button. The default is picked from what has been defined as the
-                        primary
-                        colour
-                        in
-                        your tailwind.config.js file. Bcomponents sets the default to blue. <br /><br><br /> <code
-                            class="inline">primary</code> <code class="inline">info</code>
-                        <code class="inline">secondary</code>
-                        <code class="inline">danger</code>
-                        <code class="inline">warning</code> <code class="inline">black</code>
-                        <code class="inline">primaryOutline</code>
-                        <code class="inline">infoOutline</code>
-                        <code class="inline">secondaryOutline</code>
-                        <code class="inline">dangerOutline</code>
-                        <code class="inline">warningOutline</code>
-                        <code class="inline">blackOutline</code>
-
-                    </x-table.td>
-                </x-table.tr>
-                <x-table.tr>
-                    <x-table.td>type</x-table.td>
-                    <x-table.td>string</x-table.td>
-                    <x-table.td>By default the button component is rendered as <code
-                            class="inline text-red-500">&lt;button
-                            type="button"...</code>.
-                        or submit or href <code class="inline text-red-500">&lt;button type="submit"...</code>. .
-                    </x-table.td>
-                </x-table.tr>
-                <x-table.tr>
-                    <x-table.td>disabled</x-table.td>
-                    <x-table.td>false</x-table.td>
-                    <x-table.td>Defines if the button should be disabled or enabled. <br><br /> <code
-                            class="inline">true</code>
-                        <code class="inline">false</code>
-                    </x-table.td>
-                </x-table.tr>
-
-                <x-table.tr>
-                    <x-table.td>icon</x-table.td>
-                    <x-table.td><em>blank</em></x-table.td>
-                    <x-table.td>Defines if the button should have an icon. All Heroicons icon names can be
-                        specified.</x-table.td>
-                </x-table.tr>
-                <x-table.tr>
-                    <x-table.td>icon_position</x-table.td>
-                    <x-table.td>false</x-table.td>
-                    <x-table.td>Defines if the icon should be positioned to the right of the button. Takes effect only
-                        is
-                        <em>icon</em>
-                        is not blank. <br><br /> <code class="inline">true</code> <code class="inline">false</code>
-                    </x-table.td>
-                </x-table.tr>
-            </x-table.tbody>
-        </x-table-responsive>
-
-        <h3>Button with all attributes defined</h3>
-        <pre class="language-markup line-numbers">
-        <code class="prose-code">
-            &lt;x-button
-                type="button"
-                color="primary"
-                name="btn-subscribe"
-                disabled="false"
-                class="mt-0"
-                icon="lock-closed"
-                icon_position="right"&gt;
-                ...
-            &lt;/x-button&gt;
-        </code>
-    </pre>
-
-        <x-slot:sideNavigation>
-            <div class="flex items-center">
-                <div class="dot"></div><a href="#type">Buttons Types</a>
+    <!-- Side Navigation -->
+    <x-slot:sideNavigation>
+        <div class="space-y-2">
+            <div class="font-medium text-lg mb-2">Contents</div>
+            @foreach([
+            'introduction' => 'Introduction',
+            'basic-usage' => 'Basic Usage',
+            'colors-variants' => 'Colors & Variants',
+            'sizing-styling' => 'Sizing & Styling',
+            'icons' => 'Icons',
+            'advanced' => 'Advanced Features',
+            'api' => 'API Reference'
+            ] as $id => $title)
+            <div class="flex items-center group">
+                <div class="w-2 h-2 mr-2 bg-gray-300 rounded-full group-hover:bg-primary-500"></div>
+                <a href="#{{ $id }}" class="text-gray-600 hover:text-primary-600">{{ $title }}</a>
             </div>
-            <div class="flex items-center">
-                <div class="dot"></div><a href="#secondary">Colored button</a>
-            </div>
-            <div class="flex items-center">
-                <div class="dot"></div><a href="#icons">With icons</a>
-            </div>
-            <div class="flex items-center">
-                <div class="dot"></div><a href="#events">Button events</a>
-            </div>
-
-            <div class="flex items-center">
-                <div class="dot"></div><a href="#attributes">Full list of attributes</a>
-            </div>
-        </x-slot:sideNavigation>
+            @endforeach
+        </div>
+    </x-slot:sideNavigation>
 </div>

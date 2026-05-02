@@ -307,10 +307,10 @@ layout('layouts.guest');
         </code>
     </pre>
 
-    <x-alert closeIcon="false">
+    <x-b-alert closeIcon="false">
         The source file for this component is available in <code class="inline">resources > views > components >
             bladewind > code.blade.php</code>
-    </x-alert>
+    </x-b-alert>
     <p>&nbsp;</p>
 
     <x-slot:sideNavigation>

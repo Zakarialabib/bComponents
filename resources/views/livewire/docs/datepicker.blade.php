@@ -10,10 +10,27 @@ layout('layouts.guest');
     <x-slot:title>Datepicker Component</x-slot:title>
     <x-slot:page_title>Datepicker</x-slot:page_title>
 
-    <p>
-        The datepicker component is used to select a date. It can be used as a single datepicker or a range datepicker.
-        using Pikaday, and momentjs libraries, the datepicker component is able to handle date selection and formatting.
+    <p id="intro">
+        The Datepicker component is a user-friendly interface for selecting dates, built with Alpine.js and integrated with Livewire.
+        It can be used as a single datepicker or a range datepicker, providing flexible date selection and formatting options.
+        The component uses modern date handling libraries to ensure accurate date selection and manipulation.
     </p>
+    <p>Usage Scenarios:</p>
+
+    <ul>
+        <li>
+            Form Inputs: Add date selection to forms for birthdays, appointments, or event scheduling.
+        </li>
+        <li>
+            Filtering: Allow users to filter data by date ranges in reports or dashboards.
+        </li>
+        <li>
+            Booking Systems: Enable date selection for reservation or booking systems.
+        </li>
+        <li>
+            Calendar Applications: Build calendar-based applications with intuitive date selection.
+        </li>
+    </ul>
 
     <div class="p-5 bg-white text-gray-500">
         <x-datepicker />

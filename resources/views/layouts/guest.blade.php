@@ -91,8 +91,10 @@
         @livewire('docs/nav')
     </nav>
 
-    <x-header />
-
+    <x-b-header>
+        My Application
+    </x-b-header>
+    
     <div class="sm:max-w-7xl sm:pt-10 pt-5 sm:flex sm:flex-row sm:rtl:flex-row-reverse mx-auto">
         <nav
             class="sm:w-64 sm:fixed h-0 sm:h-screen sm:overflow-y-scroll main-nav sm:pb-44 invisible sm:visible sm:pl-6  border-gray-200 dark:border-gray-800">

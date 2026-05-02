@@ -411,11 +411,11 @@ layout('layouts.guest');
         </code>
     </pre>
     <p>
-        <x-alert closeIcon="false">
+        <x-b-alert closeIcon="false">
             To manipulate Bcomponents input elements using Javascript, simply target them using the name defined
             either
             in the class or id attributes.
-        </x-alert>
+        </x-b-alert>
     </p>
     <h2 id="prefix-suffix">Prefixes and Suffixes</h2>
     <p>
@@ -875,11 +875,11 @@ layout('layouts.guest');
     </pre>
 
     <p>&nbsp;</p>
-    <x-alert closeIcon="false">
+    <x-b-alert closeIcon="false">
         The source file for this component is available in <code class="inline">resources > views > components >
             bladewind
             > input.blade.php</code>
-    </x-alert>
+    </x-b-alert>
     <p>&nbsp;</p>
 
     <x-slot:sideNavigation>

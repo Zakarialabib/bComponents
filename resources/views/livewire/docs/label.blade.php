@@ -73,9 +73,9 @@ layout('layouts.guest');
     </pre>
     <br />
     <p>
-        <x-alert type="warning" closeIcon="false">
+        <x-b-alert type="warning" closeIcon="false">
             To prevent erratic behaviour when using the label multiple times on the same page, you should give each label a unique name. You can do this by setting the <code class="inline">name</code> attribute on the label.
-        </x-alert>
+        </x-b-alert>
     </p>
 
     <h2 id="attributes">Full List Of Attributes</h2>
@@ -121,9 +121,9 @@ layout('layouts.guest');
         </code>
     </pre>
 
-    <x-alert closeIcon="false">
+    <x-b-alert closeIcon="false">
         The source file for this component is available in <code class="inline">resources > views > components > bladewind > label.blade.php</code>
-    </x-alert>
+    </x-b-alert>
 
     <x-slot:sideNavigation>
         <div class="flex items-center"><div class="dot"></div><a href="#attributes">Full list of attributes</a></div>

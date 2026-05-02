@@ -62,12 +62,12 @@ layout('layouts.guest');
     </pre>
 
     <p>
-        <x-alert closeIcon="false">
+        <x-b-alert closeIcon="false">
             IMPORTANT: Bcomponents Modals are created, targetted and invoked using the <code
                 class="inline text-red-500">name</code> attribute.
             You can have several modals on the same page but it is very important to provide unique names for each
             modal.
-        </x-alert>
+        </x-b-alert>
     </p>
     <p>
         Clicking on the backdrop of the modal or on the cancel button will by default dismiss the modal. You probably
@@ -251,7 +251,7 @@ layout('layouts.guest');
 
     <h2 id="sizes">Different Sizes</h2>
     <p>
-        <x-alert closeIcon="false" show_icon="false">On mobile the modal has just one size</x-alert>
+        <x-b-alert closeIcon="false" show_icon="false">On mobile the modal has just one size</x-b-alert>
     </p>
     <p>
         You could tell the above modals looked quite squashed. The Bcomponents modal component comes with a size
@@ -472,8 +472,8 @@ layout('layouts.guest');
         when
         stepping away from their computers.</p>
     <p>
-        <x-alert type="warning" closeIcon="false" show_icon="false">Refresh the page to get out of locked
-            mode</x-alert>
+        <x-b-alert type="warning" closeIcon="false" show_icon="false">Refresh the page to get out of locked
+            mode</x-b-alert>
     </p>
     <p>
         <x-button onclick="showModal('lock-screen')" icon="lock-closed" class="text-white">lock the screen</x-button>
@@ -909,12 +909,12 @@ layout('layouts.guest');
         </code>
     </pre>
 
-    <x-alert closeIcon="false">
+    <x-b-alert closeIcon="false">
         The source file for this component is available in <code class="inline">resources > views > components >
             bladewind
             > modal.blade.php</code> and
         <code class="inline">resources > views > components > bladewind > modal-icons.blade.php</code>
-    </x-alert>
+    </x-b-alert>
 
     <x-slot:sideNavigation>
         <div class="flex items-center">

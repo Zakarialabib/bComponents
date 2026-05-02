@@ -20,11 +20,11 @@ $countries = computed(function () {
     </p>
 
     <p>
-        <x-alert type="error" closeIcon="false">
+        <x-b-alert type="error" closeIcon="false">
             Note: If you have multiple dropdown components on a page, ensure each one has a <b>unique</b> name to avoid
             erratic behaviour. This is because each component maintains its own state, and having unique names helps to
             prevent conflicts.
-        </x-alert>
+        </x-b-alert>
     </p>
     
     <h2 id="basic">Basic dropdown</h2>

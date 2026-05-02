@@ -8,6 +8,7 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/views/components/*.blade.php',
+        './vendor/zakarialabib/bcomponents/src/resources/views/**/*.blade.php',
     ],
   
     theme: {

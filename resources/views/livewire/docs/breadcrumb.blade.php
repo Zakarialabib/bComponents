@@ -164,3 +164,47 @@ layout('layouts.guest');
         </div>
     </x-slot:sideNavigation>
 </div>
+
+    <h3 class="mt-4">Customizable Breadcrumb</h3>
+
+    <p>
+        The Breadcrumb component offers various customization options through Tailwind CSS classes. You can modify the appearance of the breadcrumb separator, text colors, and spacing.
+    </p>
+
+    <x-breadcrumb title="Customized Page" :breadcrumbs="[
+        ['name' => 'Home', 'url' => '/', 'icon' => 'fas fa-home'],
+        ['name' => 'Products', 'url' => '/products', 'icon' => 'fas fa-box'],
+        ['name' => 'Category', 'url' => '/products/category', 'icon' => 'fas fa-tags'],
+    ]" class="text-purple-600" separator=">" />
+
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-breadcrumb title="Customized Page" :breadcrumbs="[
+                ['name' => 'Home', 'url' => '/', 'icon' => 'fas fa-home'],
+                ['name' => 'Products', 'url' => '/products', 'icon' => 'fas fa-box'],
+                ['name' => 'Category', 'url' => '/products/category', 'icon' => 'fas fa-tags']
+            ]" class="text-purple-600" separator=">" /&gt;
+        </code>
+    </pre>
+
+    <h3 class="mt-4">Responsive Breadcrumb</h3>
+
+    <p>
+        The Breadcrumb component is fully responsive and can adapt to different screen sizes. You can control the visibility of icons and text on different breakpoints.
+    </p>
+
+    <x-breadcrumb title="Responsive Page" :breadcrumbs="[
+        ['name' => 'Home', 'url' => '/', 'icon' => 'fas fa-home'],
+        ['name' => 'Dashboard', 'url' => '/dashboard', 'icon' => 'fas fa-tachometer-alt'],
+        ['name' => 'Statistics', 'url' => '/dashboard/stats', 'icon' => 'fas fa-chart-line'],
+    ]" responsive />
+
+    <pre class="language-markup line-numbers">
+        <code>
+            &lt;x-breadcrumb title="Responsive Page" :breadcrumbs="[
+                ['name' => 'Home', 'url' => '/', 'icon' => 'fas fa-home'],
+                ['name' => 'Dashboard', 'url' => '/dashboard', 'icon' => 'fas fa-tachometer-alt'],
+                ['name' => 'Statistics', 'url' => '/dashboard/stats', 'icon' => 'fas fa-chart-line']
+            ]" responsive /&gt;
+        </code>
+    </pre>

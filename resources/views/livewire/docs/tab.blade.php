@@ -431,13 +431,13 @@ layout('layouts.guest');
         </code>
     </pre>
 
-    <x-alert closeIcon="false">
+    <x-b-alert closeIcon="false">
         The source files for this component are available in <code class="inline">resources > views > components >
             bladewind > tab-group.blade.php</code>,
         <code class="inline">resources > views > components > bladewind > tab-heading.blade.php</code>,
         <code class="inline">resources > views > components > bladewind > tab-body.blade.php</code> and
         <code class="inline">resources > views > components > bladewind > tab-content.blade.php</code>
-    </x-alert>
+    </x-b-alert>
 
     <x-slot:sideNavigation>
         <div class="flex items-center">
